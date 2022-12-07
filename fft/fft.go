@@ -8,6 +8,7 @@ import (
 
 type Poly []complex128
 
+
 func FFT(p []complex128, f bool) Poly{
 	n := len(p)
 	if n == 1 {
@@ -18,11 +19,6 @@ func FFT(p []complex128, f bool) Poly{
 		w_n = 1/w_n
 	}
 	w := complex(1,0)
-	// if !f{
-	// 	w = complex(1/float64(n),0)*cmplx.Pow(cmplx.Exp(complex(0,float64(-2*math.Pi)/float64(n))),-1+0i)
-	// 	fmt.Println("working")
-	// }
-	
 
 	pe := make(Poly, n/2)
 	po := make(Poly, n/2)
@@ -34,15 +30,9 @@ func FFT(p []complex128, f bool) Poly{
 			po[i/2] = p[i]
 		}
 	}
-	// fmt.Println(w)
-	// fmt.Printf("pe= %v, po = %v",pe,po)
-	// return p
-	// complex(math.Cos((2*j*math.Pi)/n),math.Sin((2*j*math.Pi)/n))
 
 	ye := FFT(pe, f)
 	yo := FFT(po, f)
-
-	// fmt.Printf("n = %d, ye = %v, yo = %v",n,ye,yo)
 
 	y := make(Poly, n)
 	if f{
@@ -56,13 +46,9 @@ func FFT(p []complex128, f bool) Poly{
 			y[j] = (ye[j] + yo[j]*w)/2
 			y[j+n/2] = (ye[j] - yo[j]*w)/2
 			w = w * w_n		
-		}
-		
+		}	
 	}
-		
-	
 	return y;
-
 } 
 
 func Hello(name string) string{

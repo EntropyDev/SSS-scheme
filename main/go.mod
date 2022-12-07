@@ -4,4 +4,8 @@ go 1.19
 
 replace fft => ../fft
 
-require fft v0.0.0-00010101000000-000000000000
+replace poly => ../poly
+
+require poly v0.0.0-00010101000000-000000000000
+
+require fft v0.0.0-00010101000000-000000000000 // indirect
