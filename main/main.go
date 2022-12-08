@@ -18,22 +18,13 @@ func main(){
 	p = append(p,complex(1,0))
 	p = append(p,complex(0,0))
 	p = append(p,complex(1,0))
-	p = append(p,complex(0,0))
-	p = append(p,complex(0,0))
-	p = append(p,complex(0,0))
-	p = append(p,complex(0,0))
-	printSlice(p)
+	// printSlice(p)
 
 	var q []complex128
 	q = append(q,complex(-4,0))
 	q = append(q,complex(0,0))
 	q = append(q,complex(1,0))
-	q = append(q,complex(0,0))
-	q = append(q,complex(0,0))
-	q = append(q,complex(0,0))
-	q = append(q,complex(0,0))
-	q = append(q,complex(0,0))
-	printSlice(q)
+	// printSlice(q)
 
 	fmt.Println(poly.PolyMul(p,q))
 
