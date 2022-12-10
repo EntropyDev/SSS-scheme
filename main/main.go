@@ -26,7 +26,19 @@ func main(){
 	q = append(q,complex(1,0))
 	// printSlice(q)
 
-	fmt.Println(poly.PolyMul(p,q))
+	var a []complex128
+	a = append(a,complex(7,0))
+	a = append(a,complex(-1,0))
+	a = append(a,complex(1,0))
+	a = append(a,complex(2,0))
+	a = append(a,complex(-1,0))
+	a = append(a,complex(-3,0))
+	a = append(a,complex(1,0))
+	a = append(a,complex(4,0))
+
+	fmt.Println(poly.Reciprocal(a))
+
+	// fmt.Println(poly.PolyMul(p,q))
 
 	// fmt.Printf("%v",fft.FFT(p,true))
 	// p2 := fft.FFT(p,true)
