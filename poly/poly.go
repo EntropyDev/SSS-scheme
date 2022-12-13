@@ -9,6 +9,9 @@ import (
 
 // Multiplies two polynomials of degree m,n and returns the resultant polynomial of degree a+b.
 func PolyMul(p []complex128,q []complex128) []complex128{
+	if len(p) == 0 || len(q) == 0 {
+		return []complex128{}
+	}
 	p = reverse(p)
 	q = reverse(q)
 	degP := len(p)-1
@@ -49,7 +52,7 @@ func Reciprocal(p []complex128) []complex128{
 	// return q
 	var r []complex128
 	// tmp := make([]complex128,((3*k/2))-2)
-	q2x := multiply(q,complex(2,0))
+	q2x := Poly_scalar_mul(q,complex(2,0))
 	q2x = Poly_scale(q2x,3*k/2-2)
 	q_square := PolyMul(q,q)
 	// return q_square
@@ -69,12 +72,12 @@ func Reciprocal(p []complex128) []complex128{
 // ###############
 // ###############
 
-func multiply(slice []complex128, factor complex128) []complex128 {
-    for i := 0; i < len(slice); i++ {
-        slice[i] = slice[i] * factor
-    }
-	return slice
-}
+// func Poly_scalar(slice []complex128, factor complex128) []complex128 {
+//     for i := 0; i < len(slice); i++ {
+//         slice[i] = slice[i] * factor
+//     }
+// 	return slice
+// }
 
 func reverse(slice []complex128) []complex128{
 	rev_slice := []complex128{}
@@ -107,10 +110,13 @@ func Poly_deg(p []complex128) int {
 }
 
 func Poly_scale(p []complex128, n int) []complex128{
+	if len(p) == 0 {
+		return []complex128{}
+	}
 	if n >= 0 {
 		return append(p,make([]complex128,n)...)
 	}else{
-		return p[:n]
+		return p[:len(p)+n]
 	}
 }
 
